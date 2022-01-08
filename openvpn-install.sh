@@ -1065,7 +1065,9 @@ function newClient() {
 	echo "Tell me a name for the client."
 	echo "The name must consist of alphanumeric character. It may also include an underscore or a dash."
 
-	until [[ $CLIENT =~ ^[a-zA-Z0-9_-]+$ ]]; do
+	REGEX='^[[:alnum:].-]+$'
+
+	until [[ $CLIENT =~ $REGEX ]]; do
 		read -rp "Client name: " -e CLIENT
 	done
 
